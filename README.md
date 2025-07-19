@@ -1,10 +1,6 @@
-# Math Solver (Paid)
+# Math Solver
 
 Solve math equations and create beautiful LaTeX-formatted mathematical expressions directly inside RemNote.
-
-## Pricing
-
-30-day free trial, then €18 one-time payment.
 
 ## Features
 
@@ -30,17 +26,12 @@ Your math will still be there as it gets stored as LaTeX inside RemNote. However
 
 No, shared math is visible to everyone as it's stored in RemNote's math blocks. You only need the plugin to edit and calculate new expressions.
 
-**What happens after my free trial ends?**
-
-You will lose the ability to edit or create new math expressions until you purchase the full version. Your existing math notes will remain visible but cannot be modified.
-
 **Can I use this offline?**
 
 Yes, no internet connection is required to use the plugin.
 
 ## Data Privacy
 
-- **Payment Processing**: Customer payment data is securely handled by Stripe.
 - **Usage Analytics**: We collect a daily usage pings to monitor plugin adoption. This data is anonymous and helps us improve the plugin.
 - **Mathematical Content**: Your math expressions and calculations are stored in the RemNote app.
 

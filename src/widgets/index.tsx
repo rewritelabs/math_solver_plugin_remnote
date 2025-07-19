@@ -65,10 +65,6 @@ async function onActivate(plugin: ReactRNPlugin) {
     powerupFilter: MATH_SOLVER_POWERUP,
   });
 
-  await plugin.app.registerWidget('math_solver_upgrade_widget', WidgetLocation.Popup, {
-    dimensions: { height: 540, width: 360 },
-  });
-
   await plugin.app.registerWidget('math_solver_graphs_widget', WidgetLocation.Popup, {
     dimensions: { height: 540, width: 360 },
   });

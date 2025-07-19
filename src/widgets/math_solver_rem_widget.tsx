@@ -10,7 +10,6 @@ import '../App.css';
 import { AutoResizeTextarea } from '../helpers/AutoResizeTextarea';
 import { HELP_URL, MATH_SOLVER_POWERUP, PROPERTIY_CONFIG, SETTINGS_CONFIG } from '../constants';
 import { loadPyodideInBackground } from '../helpers/loadPyodide';
-import { checkPurchaseStatus } from '../helpers/purchase';
 import { computeMathSolver } from '../helpers/computeMathSolver';
 
 export const MathSolverRemWidget = () => {
@@ -76,11 +75,6 @@ export const MathSolverRemWidget = () => {
 
   const openClicked = async (e: any) => {
     e.preventDefault();
-
-    const checkResult = await checkPurchaseStatus(plugin);
-    if (checkResult === 'INVALID') {
-      return;
-    }
 
     setUiState('OPEN');
 
@@ -268,7 +262,7 @@ export const MathSolverRemWidget = () => {
         )}
         {uiState === 'LOADING' && (
           <div className="mathsolver-plugin__controls mathsolver-plugin__controls--loading">
-            <span>Calculating...</span>
+            <span>Calculating... (may take up to a minute)</span>
           </div>
         )}
       </div>
