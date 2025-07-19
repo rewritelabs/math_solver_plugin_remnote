@@ -6,11 +6,12 @@ import {
   WidgetLocation,
 } from '@remnote/plugin-sdk';
 import { useEffect, useRef, useState } from 'react';
-import '../App.css';
 import { AutoResizeTextarea } from '../helpers/AutoResizeTextarea';
 import { HELP_URL, MATH_SOLVER_POWERUP, PROPERTIY_CONFIG, SETTINGS_CONFIG } from '../constants';
 import { loadPyodideInBackground } from '../helpers/loadPyodide';
 import { computeMathSolver } from '../helpers/computeMathSolver';
+
+import '../App.css';
 
 export const MathSolverRemWidget = () => {
   const plugin = usePlugin();
@@ -228,11 +229,11 @@ export const MathSolverRemWidget = () => {
         {uiState === 'CLOSED' && (
           <div className="mathsolver-plugin__controls mathsolver-plugin__controls--closed">
             <a href="#" className="mathsolver-plugin__control" onClick={openClicked}>
-              <img src={`${plugin.rootURL}mathsolver.png`} />
+              <img src={`${plugin.rootURL}mathsolver.png`} height="24" />
             </a>
             {warnings.length > 0 && (
               <a href="#" className="mathsolver-plugin__control" onClick={dispayWarnings}>
-                <img src={`${plugin.rootURL}warning.png`} />
+                <img src={`${plugin.rootURL}warning.png`} height="24" />
               </a>
             )}
           </div>
@@ -240,22 +241,22 @@ export const MathSolverRemWidget = () => {
         {uiState === 'OPEN' && (
           <div className="mathsolver-plugin__controls mathsolver-plugin__controls--open">
             <a href="#" className="mathsolver-plugin__control" onClick={closeClicked}>
-              <img src={`${plugin.rootURL}close.png`} />
+              <img src={`${plugin.rootURL}close.png`} height="24" />
             </a>
             <a href="#" className="mathsolver-plugin__control" onClick={acceptClicked}>
-              <img src={`${plugin.rootURL}accept.png`} />
+              <img src={`${plugin.rootURL}accept.png`} height="24" />
             </a>
             <a href="#" className="mathsolver-plugin__control" onClick={helpClicked}>
-              <img src={`${plugin.rootURL}questionmark.png`} />
+              <img src={`${plugin.rootURL}questionmark.png`} height="24" />
             </a>
             {plots.length > 0 && (
               <a href="#" className="mathsolver-plugin__control" onClick={graphsClicked}>
-                <img src={`${plugin.rootURL}graph.png`} />
+                <img src={`${plugin.rootURL}graph.png`} height="24" />
               </a>
             )}
             {warnings.length > 0 && (
               <a href="#" className="mathsolver-plugin__control" onClick={dispayWarnings}>
-                <img src={`${plugin.rootURL}warning.png`} />
+                <img src={`${plugin.rootURL}warning.png`} height="24" />
               </a>
             )}
           </div>

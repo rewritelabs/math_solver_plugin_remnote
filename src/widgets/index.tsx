@@ -1,5 +1,6 @@
 import { declareIndexPlugin, ReactRNPlugin, WidgetLocation } from '@remnote/plugin-sdk';
 import '../style.css';
+import '../App.css';
 import {
   MATH_SOLVER_POWERUP,
   MATH_SOLVER_POWERUP_NAME,
