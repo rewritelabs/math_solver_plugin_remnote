@@ -19,11 +19,14 @@ const SANDBOX_SUFFIX = '-sandbox';
 
 const config = {
   mode: isProd ? 'production' : 'development',
-  entry: glob.sync('./src/widgets/**.tsx').reduce(function (obj, el) {
-    obj[path.parse(el).name] = el;
-    obj[path.parse(el).name + SANDBOX_SUFFIX] = el;
-    return obj;
-  }, {}),
+  entry: Object.assign(
+    glob.sync('./src/widgets/**.tsx').reduce(function (obj, el) {
+      obj[path.parse(el).name] = el;
+      obj[path.parse(el).name + SANDBOX_SUFFIX] = el;
+      return obj;
+    }, {}),
+    { App: './src/App.css' } // Add App.css as a separate entry
+  ),
 
   output: {
     path: resolve(__dirname, 'dist'),
@@ -47,7 +50,7 @@ const config = {
       {
         test: /\.css$/i,
         use: [
-          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { url: false } },
           'postcss-loader',
         ],
@@ -55,9 +58,11 @@ const config = {
     ],
   },
   plugins: [
-    isDevelopment ? undefined : new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
+    isDevelopment
+      ? undefined
+      : new MiniCssExtractPlugin({
+          filename: '[name].css',
+        }),
     new HtmlWebpackPlugin({
       templateContent: `
       <body></body>
@@ -88,9 +93,9 @@ const config = {
     }),
     new CopyPlugin({
       patterns: [
-        {from: 'public', to: ''},
-        {from: 'README.md', to: ''}
-      ]
+        { from: 'public', to: '' },
+        { from: 'README.md', to: '' },
+      ],
     }),
     fastRefresh,
   ].filter(Boolean),
@@ -111,7 +116,7 @@ if (isProd) {
     watchFiles: ['src/*'],
     headers: {
       'Access-Control-Allow-Origin': '*',
-      "Access-Control-Allow-Headers": "baggage, sentry-trace"
+      'Access-Control-Allow-Headers': 'baggage, sentry-trace',
     },
   };
 }
