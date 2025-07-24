@@ -66,7 +66,7 @@ export const MathSolverRemWidget = () => {
     const innerWidth = window.innerWidth;
     const setting: boolean = await reactivePlugin.settings.getSetting(SETTINGS_CONFIG.hideOnMobile);
 
-    return setting && innerWidth < 720;
+    return setting && innerWidth < 500;
   }, []);
 
   const hideOnDesktop = useTrackerPlugin(async (reactivePlugin: any) => {
@@ -75,7 +75,7 @@ export const MathSolverRemWidget = () => {
       SETTINGS_CONFIG.hideOnDesktop
     );
 
-    return setting && innerWidth >= 720;
+    return setting && innerWidth >= 500;
   }, []);
 
   useOnMessageBroadcast(({ message }) => {

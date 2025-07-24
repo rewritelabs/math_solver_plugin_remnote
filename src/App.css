@@ -81,8 +81,3 @@
   border: 1px solid #e1e5e9;
   color: white;
 }
-
-/* Graphs widget */
-.mathsolver-plugin__graphs * {
-  box-sizing: border-box;
-}

@@ -42,7 +42,7 @@ export const MathSolverGraphsWidget = () => {
   };
 
   return (
-    <div className="mathsolver-plugin__graphs">
+    <div className="mathsolver-plugin mathsolver-plugin--graphs">
       <div style={{ padding: '20px', width: '100%' }}>
         <h2>Math Solver Graphs ({plots.length})</h2>
         <div style={{ marginBottom: '20px' }}>
