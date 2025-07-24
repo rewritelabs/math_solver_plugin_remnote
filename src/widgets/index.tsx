@@ -7,7 +7,7 @@ import {
 } from '../constants';
 
 import '../style.css';
-import '../index.css';
+import '../App.css';
 
 async function onActivate(plugin: ReactRNPlugin) {
   // Register settings

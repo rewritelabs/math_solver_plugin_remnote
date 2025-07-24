@@ -19,16 +19,14 @@ const SANDBOX_SUFFIX = '-sandbox';
 
 const config = {
   mode: isProd ? 'production' : 'development',
-  entry: glob.sync('./src/widgets/**/*.tsx').reduce((obj, el) => {
-    const rel = path
-      .relative('src/widgets', el)
-      .replace(/\.[tj]sx?$/, '')
-      .replace(/\\/g, '/');
-
-    obj[rel] = el;
-    obj[`${rel}${SANDBOX_SUFFIX}`] = el;
-    return obj;
-  }, {}),
+  entry: Object.assign(
+    glob.sync('./src/widgets/**.tsx').reduce(function (obj, el) {
+      obj[path.parse(el).name] = el;
+      obj[path.parse(el).name + SANDBOX_SUFFIX] = el;
+      return obj;
+    }, {}),
+    { App: './src/App.css' } // Add App.css as a separate entry
+  ),
 
   output: {
     path: resolve(__dirname, 'dist'),

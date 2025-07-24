@@ -12,7 +12,7 @@ import { HELP_URL, MATH_SOLVER_POWERUP, PROPERTIY_CONFIG, SETTINGS_CONFIG } from
 import { loadPyodideInBackground } from '../helpers/loadPyodide';
 import { computeMathSolver } from '../helpers/computeMathSolver';
 
-import '../index.css';
+import '../App.css';
 
 export const MathSolverRemWidget = () => {
   const plugin = usePlugin();
