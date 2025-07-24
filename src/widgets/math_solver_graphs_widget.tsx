@@ -1,7 +1,7 @@
 import { renderWidget, usePlugin, useRunAsync } from '@remnote/plugin-sdk';
 import { useState, useEffect } from 'react';
 
-import '../App.css';
+import '../index.css';
 
 export const MathSolverGraphsWidget = () => {
   const plugin = usePlugin();

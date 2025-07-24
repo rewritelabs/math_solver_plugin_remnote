@@ -17,4 +17,6 @@ export const PROPERTIY_CONFIG = {
 
 export const SETTINGS_CONFIG = {
   controlsOnHover: 'controlsOnHover',
+  hideOnMobile: 'hideOnMobile',
+  hideOnDesktop: 'hideOnDesktop',
 };

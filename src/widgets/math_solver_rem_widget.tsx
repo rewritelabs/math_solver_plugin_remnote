@@ -1,5 +1,6 @@
 import {
   renderWidget,
+  useOnMessageBroadcast,
   usePlugin,
   useRunAsync,
   useTrackerPlugin,
@@ -11,7 +12,7 @@ import { HELP_URL, MATH_SOLVER_POWERUP, PROPERTIY_CONFIG, SETTINGS_CONFIG } from
 import { loadPyodideInBackground } from '../helpers/loadPyodide';
 import { computeMathSolver } from '../helpers/computeMathSolver';
 
-import '../App.css';
+import '../index.css';
 
 export const MathSolverRemWidget = () => {
   const plugin = usePlugin();
@@ -61,6 +62,30 @@ export const MathSolverRemWidget = () => {
     []
   );
 
+  const hideOnMobile = useTrackerPlugin(async (reactivePlugin: any) => {
+    const innerWidth = window.innerWidth;
+    const setting: boolean = await reactivePlugin.settings.getSetting(SETTINGS_CONFIG.hideOnMobile);
+
+    return setting && innerWidth < 720;
+  }, []);
+
+  const hideOnDesktop = useTrackerPlugin(async (reactivePlugin: any) => {
+    const innerWidth = window.innerWidth;
+    const setting: boolean = await reactivePlugin.settings.getSetting(
+      SETTINGS_CONFIG.hideOnDesktop
+    );
+
+    return setting && innerWidth >= 720;
+  }, []);
+
+  useOnMessageBroadcast(({ message }) => {
+    if (message && message.type === 'OpenMathSolver') {
+      if (message.remId === remId) {
+        openEditor();
+      }
+    }
+  });
+
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && e.shiftKey) {
       e.preventDefault();
@@ -74,9 +99,7 @@ export const MathSolverRemWidget = () => {
     }
   };
 
-  const openClicked = async (e: any) => {
-    e.preventDefault();
-
+  const openEditor = async () => {
     setUiState('OPEN');
 
     if (!pyodideInstanceRef.current) {
@@ -95,6 +118,11 @@ export const MathSolverRemWidget = () => {
         plugin.app.toast("Couldn't initalize Math Solver plugin.");
       }
     }
+  };
+
+  const openClicked = async (e: any) => {
+    e.preventDefault();
+    await openEditor();
   };
 
   const closeClicked = (e: any) => {
@@ -217,6 +245,10 @@ export const MathSolverRemWidget = () => {
   //     console.log(temp);
   //   })();
   // }, []);
+
+  if (uiState === 'CLOSED' && (hideOnDesktop !== false || hideOnMobile !== false)) {
+    return <div className={'mathsolver-plugin mathsolver-plugin--root'}></div>;
+  }
 
   return (
     <div

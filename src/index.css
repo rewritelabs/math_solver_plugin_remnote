@@ -1,0 +1,88 @@
+.mathsolver-plugin * {
+  box-sizing: border-box;
+}
+
+.mathsolver-plugin span,
+.mathsolver-plugin h2,
+.mathsolver-plugin h4 {
+  color: #1d1d1d;
+}
+
+.dark .mathsolver-plugin span,
+.dark .mathsolver-plugin h2,
+.dark .mathsolver-plugin h4 {
+  color: #e1e1e1;
+}
+
+@media print {
+  .mathsolver-plugin {
+    display: none !important;
+  }
+}
+
+.mathsolver-plugin__controls-wrapper {
+  width: 100%;
+}
+
+@media (pointer: fine) {
+  .mathsolver-plugin--hide .mathsolver-plugin__controls--closed {
+    visibility: hidden;
+  }
+
+  .mathsolver-plugin--hide
+    .mathsolver-plugin__controls-wrapper:hover
+    .mathsolver-plugin__controls--closed {
+    visibility: visible;
+  }
+}
+
+.mathsolver-plugin__controls {
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+}
+
+.mathsolver-plugin__controls--loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mathsolver-plugin__control {
+  margin-right: 5px;
+}
+
+.mathsolver-plugin__control img {
+  height: 100%;
+}
+
+.mathsolver-plugin__controls__loading span {
+  font-size: 16px;
+}
+
+.mathsolver-plugin__input {
+  margin-top: 4px;
+}
+
+.mathsolver-plugin__input textarea {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 6px 8px;
+  color: black;
+  border: 1px solid #1d1d1d;
+  border-radius: 0;
+  background-color: transparent;
+  resize: none; /* Allow only vertical resize */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dark .mathsolver-plugin__input textarea {
+  border: 1px solid #e1e5e9;
+  color: white;
+}
+
+/* Graphs widget */
+.mathsolver-plugin__graphs * {
+  box-sizing: border-box;
+}
