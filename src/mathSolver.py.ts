@@ -35,6 +35,7 @@ class MathSolver:
             },
             "symbols": {},
             "functions": {},
+            "internalVariables": {},
             "symbolExpressions": {},
             "relatedSymbols": {},
             "symbolErrors": {},
@@ -307,7 +308,9 @@ def processMath(
     # Check equal signs (order matters - check longer patterns first)
     hasForceEqual = re.search(r":=", mathPart)
     hasCommentEqual = re.search(r"#=", mathPart)
-    hasNormalEqual = re.search(r"=", mathPart) and not hasForceEqual and not hasCommentEqual
+    hasNormalEqual = (
+        re.search(r"=", mathPart) and not hasForceEqual and not hasCommentEqual
+    )
 
     if hasForceEqual:
         parts = re.split(r":=", mathPart)
@@ -449,20 +452,12 @@ def processExpressions(
         or ctx["equationType"] == "NONE"
     ):
         internalVariable = ctx.get("internalVariable")
-        result = storeSymbol(
-            self,
-            ctx,
-            internalVariable,
-            (
-                sympy.Eq(expressions[0], expressions[1])
-                if len(expressions) == 2
-                else expressions[0]
-            ),
-            ctx["equationType"],
+        ctx["internalVariables"][internalVariable] = (
+            sympy.Eq(expressions[0], expressions[1])
+            if len(expressions) == 2
+            else expressions[0]
         )
-        if not result:
-            raise
-            # return r"\O"
+        # return r"\O"
 
     # Produce final string
     finalStringExpressions = []
@@ -562,7 +557,9 @@ def addSymbolError(self, ctx, key, errorMsg):
 
 
 def subAndCalculate(self, ctx, expr):
-    result = substitute(expr, ctx["symbols"], ctx["functions"])
+    result = substitute(
+        expr, {**ctx["internalVariables"], **ctx["symbols"]}, ctx["functions"]
+    )
     if not isinstance(result, list):
         try:
             togetherResult = sympy.together(result)
@@ -654,9 +651,12 @@ def parseToSympy(self, ctx, stringExpression, alwaysEvaluate=False):
     evaluate = bool(re.search(alwaysEvalForPattern, stringExpression)) or alwaysEvaluate
 
     if evaluate:
-        localDict = {**sympy.__dict__, **ctx["symbols"]}
+        localDict = {**sympy.__dict__, **ctx["internalVariables"], **ctx["symbols"]}
     else:
-        localDict = {**sympy.__dict__}
+        localDict = {
+            **sympy.__dict__,
+            **ctx["internalVariables"],
+        }
 
     try:
         with sympy.evaluate(evaluate):
@@ -721,7 +721,7 @@ def solveFn(self, ctx, stringExpression):
 
     firstArg = sympy.parse_expr(
         ast.unparse(firstArgAst),
-        local_dict={**sympy.__dict__, **ctx["symbols"]},
+        local_dict={**sympy.__dict__, **ctx["internalVariables"], **ctx["symbols"]},
         transformations=transformations,
         evaluate=True,
     )

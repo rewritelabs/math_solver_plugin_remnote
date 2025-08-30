@@ -8,7 +8,7 @@
   "version": {
     "major": 0,
     "minor": 1,
-    "patch": 6
+    "patch": 7
   },
   "requestNative": false,
   "requiredScopes": [
@@ -18,5 +18,5 @@
     }
   ],
   "repoUrl": "https://github.com/rewritelabs/math_solver_plugin_remnote",
-  "supportUrl": "https://rewritelabs.com/ventures/mathsolver/help/"
+  "supportUrl": "https://rewritelabs.com/ventures/mathsolver/"
 }
