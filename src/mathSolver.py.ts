@@ -462,7 +462,7 @@ def processExpressions(
     # Produce final string
     finalStringExpressions = []
     for expr in expressions:
-        if expr:
+        if expr or expr == 0:
             latex = self.convertToLatex(expr, ctx["options"]["order"])
         else:
             if isinstance(expr, set) or isinstance(expr, sympy.sets.sets.EmptySet):
@@ -749,7 +749,7 @@ def solveFn(self, ctx, stringExpression):
                 if temp and isinstance(temp, str):
                     solveFor.append(temp)
 
-    symbolsToSubstitute = {**ctx["symbols"]}
+    symbolsToSubstitute = {**ctx["internalVariables"], **ctx["symbols"]}
     for symbolString in solveFor:
         if symbolsToSubstitute.get(symbolString):
             symbolsToSubstitute.pop(symbolString)
