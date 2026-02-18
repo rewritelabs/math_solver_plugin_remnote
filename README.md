@@ -32,7 +32,7 @@ Yes, no internet connection is required to use the plugin.
 
 ## Data Privacy
 
-- **Usage Analytics**: We collect a daily usage pings to monitor plugin adoption. This data is anonymous and helps us improve the plugin.
+- **Usage Analytics**: We collect a monthly usage pings to monitor plugin adoption. This data is anonymous and helps us improve the plugin.
 - **Mathematical Content**: Your math expressions and calculations are stored in the RemNote app.
 
 <!-- ignore-after -->

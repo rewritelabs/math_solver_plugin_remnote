@@ -1,5 +1,28 @@
+.mathsolver-plugin,
 .mathsolver-plugin * {
   box-sizing: border-box;
+}
+
+.mathsolver-plugin * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  vertical-align: baseline;
+}
+
+.mathsolver-plugin img,
+.mathsolver-plugin video {
+  max-width: 100%;
+  height: auto;
+}
+
+.mathsolver-plugin button,
+.mathsolver-plugin input,
+.mathsolver-plugin textarea,
+.mathsolver-plugin select {
+  font: inherit;
 }
 
 .mathsolver-plugin span,
@@ -50,6 +73,7 @@
 
 .mathsolver-plugin__control {
   margin-right: 5px;
+  width: 24px;
 }
 
 .mathsolver-plugin__control img {
@@ -69,9 +93,9 @@
   font-size: 16px;
   padding: 6px 8px;
   color: black;
+  background-color: white;
   border: 1px solid #1d1d1d;
   border-radius: 0;
-  background-color: transparent;
   resize: none; /* Allow only vertical resize */
   width: 100%;
   box-sizing: border-box;
@@ -80,4 +104,5 @@
 .dark .mathsolver-plugin__input textarea {
   border: 1px solid #e1e5e9;
   color: white;
+  background-color: #232329;
 }

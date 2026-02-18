@@ -8,6 +8,14 @@ export const SHOP_PRODUCT_ID = 'MATHSOLVER_SINGLE_LICENCE';
 export const HELP_URL =
   'https://docsify-this.net/?basePath=https://rewritelabs.com/ventures/mathsolver/public/guides&homepage=v0_0_1.md#/';
 
+export const ANALYTICS_URL = 'https://rewritelabs.com/helpers/analytics/';
+export const ANALYTICS_PROJECT = 'mathsolver';
+export const ANALYTICS_STORAGE_MONTH_KEY = 'analyticsLastSeenMonth';
+export const ANALYTICS_EVENTS = {
+  install: 'install',
+  monthlyActive: 'monthly_active',
+};
+
 export const PROPERTIY_CONFIG = {
   mathExpressionCode: 'mathExpression',
   mathExpressionName: 'Math Expression',

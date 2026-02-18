@@ -368,3 +368,4 @@ x = 4 + y - 6
 1. **Blank lines** are preserved for better visual organization
 2. **Subscripts** - use underscore for subscript notation: `eq_1`, `x_0`, `a_n` → eq₁, x₀, aₙ
 3. **Fractions** are automatically formatted: `(x+1)/(y+2)` becomes a proper fraction
+4. **Exponents** - you can use `**` instead of `^` (for example, `x**2` = `x^2`)

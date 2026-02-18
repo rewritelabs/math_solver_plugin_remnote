@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "mathsolver_rewritelabs",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Math solver plugin for RemNote",
   "author": "Rewrite Labs",
   "license": "MIT",

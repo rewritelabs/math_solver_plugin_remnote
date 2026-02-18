@@ -11,6 +11,7 @@ import { AutoResizeTextarea } from '../helpers/AutoResizeTextarea';
 import { HELP_URL, MATH_SOLVER_POWERUP, PROPERTIY_CONFIG, SETTINGS_CONFIG } from '../constants';
 import { loadPyodideInBackground } from '../helpers/loadPyodide';
 import { computeMathSolver } from '../helpers/computeMathSolver';
+import { trackEditorOpenAnalytics } from '../helpers/analytics';
 
 import '../App.css';
 
@@ -101,6 +102,7 @@ export const MathSolverRemWidget = () => {
 
   const openEditor = async () => {
     setUiState('OPEN');
+    void trackEditorOpenAnalytics(plugin);
 
     if (!pyodideInstanceRef.current) {
       let newInstance = await loadPyodideInBackground();
