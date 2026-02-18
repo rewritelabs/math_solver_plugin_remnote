@@ -52,11 +52,11 @@ class MathSolver:
             "plots": env["plots"],
         }
 
-    def convertToLatex(self, input, order="NONE"):
+    def convertToLatex(self, expr, order="NONE"):
         if order == "LEX":
-            return self.custom_printer_ordered.doprint(input)
+            return self.custom_printer_ordered.doprint(expr)
         else:
-            return self.custom_printer.doprint(input)
+            return self.custom_printer.doprint(expr)
 
     @staticmethod
     def syntaxError(string, errorMsg):
@@ -569,12 +569,12 @@ def subAndCalculate(self, ctx, expr):
     return result
 
 
-def substitute(input, symbolsToSub, functionsToSub={}):
+def substitute(value, symbolsToSub, functionsToSub={}):
     symbolsToSubstitute = {**symbolsToSub}
     functionsToSubstitute = {**functionsToSub}
-    if isinstance(input, list):
+    if isinstance(value, list):
         finalList = []
-        for item in input:
+        for item in value:
             result = internalSubstitute(
                 item, symbolsToSubstitute, functionsToSubstitute
             )
@@ -583,13 +583,13 @@ def substitute(input, symbolsToSub, functionsToSub={}):
         return finalList
 
     else:
-        result = internalSubstitute(input, symbolsToSubstitute, functionsToSubstitute)
+        result = internalSubstitute(value, symbolsToSubstitute, functionsToSubstitute)
         return result
 
 
-def internalSubstitute(input, symbolsToSub, functionsToSub):
-    if isinstance(input, sympy.core.relational.Equality):
-        eqItems = list(input.args)
+def internalSubstitute(value, symbolsToSub, functionsToSub):
+    if isinstance(value, sympy.core.relational.Equality):
+        eqItems = list(value.args)
         lhs = eqItems[0]
         rhs = eqItems[1]
         if isinstance(lhs, sympy.core.symbol.Symbol):
@@ -610,7 +610,7 @@ def internalSubstitute(input, symbolsToSub, functionsToSub):
             expr = expr.replace(sympy.Function(innerFunctionName), innerLambdaExpr)
         functionsToSub[functionName] = sympy.Lambda(original_params, expr)
 
-    currentResult = input
+    currentResult = value
 
     for functionName, lambdaExpr in functionsToSub.items():
         currentResult = currentResult.replace(sympy.Function(functionName), lambdaExpr)

@@ -7,3 +7,4 @@ dist-ssr
 /python/experiments
 /python/venv
 /python/__pycache__
+.vscode/

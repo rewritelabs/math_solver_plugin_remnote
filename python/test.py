@@ -16,11 +16,11 @@ x + 1
 mee2r = r"99"
 
 
-def wrap(input):
+def wrap(latex_body):
     return (
         "% DO NOT EDIT MANUALLY - USE MATH SOLVER PLUGIN\n"
         + r"\\{\normalsize \begin{aligned}"
-        + input
+        + latex_body
         + r"\end{aligned}}"
     )
 
@@ -667,33 +667,32 @@ class TestMathSolver(unittest.TestCase):
         # Should have one plot
         self.assertEqual(len(result["plots"]), 1)
 
-    """def test_plot_save_to_file(self):
-        import base64
-        
-        math = "plot(sin(x), (x, -6, 6))"
-        result = self.mathSolver.compute(math)
-        
-        # Should have generated a plot
-        self.assertEqual(len(result["plots"]), 1)
-        
-        plot = result["plots"][0]
-        self.assertEqual(plot["type"], "2d")
-        self.assertTrue(plot["data"])
-        
-        # Decode base64 and save to file
-        image_data = base64.b64decode(plot["data"])
-        
-        # Save to file in current directory
-        with open("test_plot_output.png", "wb") as f:
-            f.write(image_data)
-        
-        print(f"Plot saved to test_plot_output.png (size: {len(image_data)} bytes)")
-        
-        # Verify file was created and has content
-        import os
-        self.assertTrue(os.path.exists("test_plot_output.png"))
-        self.assertGreater(os.path.getsize("test_plot_output.png"), 1000)  # Should be at least 1KB
-    """
+    # def test_plot_save_to_file(self):
+    #     import base64
+    #
+    #     math = "plot(sin(x), (x, -6, 6))"
+    #     result = self.mathSolver.compute(math)
+    #
+    #     # Should have generated a plot
+    #     self.assertEqual(len(result["plots"]), 1)
+    #
+    #     plot = result["plots"][0]
+    #     self.assertEqual(plot["type"], "2d")
+    #     self.assertTrue(plot["data"])
+    #
+    #     # Decode base64 and save to file
+    #     image_data = base64.b64decode(plot["data"])
+    #
+    #     # Save to file in current directory
+    #     with open("test_plot_output.png", "wb") as f:
+    #         f.write(image_data)
+    #
+    #     print(f"Plot saved to test_plot_output.png (size: {len(image_data)} bytes)")
+    #
+    #     # Verify file was created and has content
+    #     import os
+    #     self.assertTrue(os.path.exists("test_plot_output.png"))
+    #     self.assertGreater(os.path.getsize("test_plot_output.png"), 1000)  # Should be at least 1KB
 
     def test_plot_with_ylim(self):
         """Test plotting with y-axis limits"""
@@ -746,7 +745,7 @@ if __name__ == "__main__":
     unittest.main()
 
 
-## TODO Later
+# for later
 # o think := vs =:
 # o graph
 # o table
