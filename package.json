@@ -4,7 +4,7 @@
   "version": "0.1.8",
   "description": "Math solver plugin for RemNote",
   "author": "Rewrite Labs",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "check-types": "tsc",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress --no-open",
