@@ -4,3 +4,6 @@ dist
 dist-ssr
 *.local
 *.zip
+/python/experiments
+/python/venv
+/python/__pycache__
